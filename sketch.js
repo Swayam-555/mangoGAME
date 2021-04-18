@@ -6,12 +6,13 @@ const Body = Matter.Body;
 const Render = Matter.Render;
 const Constraint=Matter.Constraint;
 
-var treeObj, stoneObj,groundObject,launcherObj;
+var treeObj, stoneObj,groundObject;
 var mango1,mango2,mango3,mango4,mango5,mango6,mango7,mango8,mango9,mango10,mango11,mango12;
 var world,boy;
 
 //Declare launcherObject and launchForce variable here
-
+ var launcherObj;
+ var launchForce = 100;
 
 function preload(){
 	boy=loadImage("images/boy.png");
@@ -40,7 +41,7 @@ function setup() {
 	treeObj=new tree(1050,580);
 	groundObject=new ground(width/2,600,width,20);
   //create launcherObject here
-// launcherObj=new launcher(stoneObj.body,{x:200,y:100});
+ launcherObj=new launcher(stoneObj.body,{x:235,y:420});
 
 	Engine.run(engine);
 }
@@ -70,7 +71,7 @@ function draw() {
   stoneObj.display();
   groundObject.display();
   // display launcher object here
-    
+    launcherObj.display();
 
 
   detectollision(stoneObj,mango1);
@@ -90,20 +91,20 @@ function draw() {
 //create mouseDragged function here
 
 function mouseDragged(){
-  Matter.Body.setPosition(stoneObj.body,{x:mouseX,y:mouseY});
+  Matter.Body.setPosition(stoneObj.body,{x:235,y:420});
 }
 
 
 //create mouseReleased function here
 function mouseReleased(){
-  launcher.fly();
+  launcherObj.fly();
 }
 
 //create keyPressed function here
 function keyPressed(){
   if(keyCode === 32){
     Matter.Body.setPosition(stoneObj.body,{x:235,y:420});
-    launcherObj.attach(stone.body)
+  launcherObj.attach(stoneObj.body)
   }
 }
 
