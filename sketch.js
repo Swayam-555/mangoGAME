@@ -91,7 +91,7 @@ function draw() {
 //create mouseDragged function here
 
 function mouseDragged(){
-  Matter.Body.setPosition(stoneObj.body,{x:235,y:420});
+  Matter.Body.setPosition(stoneObj.body,{x:mouseX,y:mouseY});
 }
 
 
